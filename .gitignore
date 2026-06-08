@@ -1,0 +1,25 @@
+# Binary
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Environment
+.env
+
+# Logs
+*.log
+
+# Temp files
+tmp/
+air/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store

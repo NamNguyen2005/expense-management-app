@@ -3,13 +3,16 @@ package app
 import (
 	"expense-management/internal/config"
 	"expense-management/internal/routes"
+	"log"
 
 	"github.com/gin-gonic/gin"
+	"github.com/lpernett/godotenv"
 )
 
 type Application struct {
 	config *config.Config
 	route  *gin.Engine
+	modules []Module
 }
 
 type Module interface {
@@ -25,6 +28,7 @@ func NewApplication(config *config.Config, r *gin.Engine) *Application {
 	return &Application{
 		config: config,
 		route:  r,
+		modules: modules,
 	}
 }
 
@@ -40,4 +44,9 @@ func GetModulesRoutes(modules []Module) []routes.Routes {
 	return routeList
 }
 
-
+func LoadEnv() {
+	err := godotenv.Load(".env")
+  	if err != nil {
+   		log.Fatal("Error loading .env file")
+ 	 }
+}
